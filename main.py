@@ -109,7 +109,7 @@ def get_birthday(birthday, year, today):
     else:
         birth_date = year_date
         birth_day = str(birth_date.__sub__(today)).split(" ")[0]
-        print("birth_day:"+birth_day)
+    print("birth_day:"+birth_day)
     return birth_day
 
 
@@ -202,7 +202,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
             birthday_data = "今天{}生日哦，祝{}生日快乐！".format(value["name"], value["name"])
         else:
             birthday_data = "距离{}的生日还有{}天".format(value["name"], birth_day)
-             print(birthday_data)
+        print(birthday_data)
         # 将生日数据插入data
         data["data"][key] = {"value": birthday_data, "color": get_color()}
     headers = {
