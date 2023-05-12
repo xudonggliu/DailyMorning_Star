@@ -67,7 +67,9 @@ def get_weather():
   url = https://devapi.qweather.com/v7/weather/3d?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2
   res = requests.get(url).json()
   weatherinfo = res['data']['daily'][0]
-  weather =  
+  weather =  weatherinfo["textDay"]
+  tempn = weatherinfo["tempMin"]
+    
 
   return weather['weather'], math.floor(weather['temp'])
 
