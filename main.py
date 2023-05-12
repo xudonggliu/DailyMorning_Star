@@ -32,36 +32,44 @@ def get_access_token():
     return access_token
 
 
-def get_weather(province, city):
+# def get_weather(province, city):
     # 城市id
-    try:
-        city_id = cityinfo.cityInfo[province][city]["AREAID"]
-    except KeyError:
-        print("推送消息失败，请检查省份或城市是否正确")
-        os.system("pause")
-        sys.exit(1)
+ #    try:
+   #      city_id = cityinfo.cityInfo[province][city]["AREAID"]
+  #   except KeyError:
+  #       print("推送消息失败，请检查省份或城市是否正确")
+  #       os.system("pause")
+  #       sys.exit(1)
     # city_id = 101280101
     # 毫秒级时间戳
-    t = (int(round(time() * 1000)))
-    headers = {
-        "Referer": "http://www.weather.com.cn/weather1d/{}.shtml".format(city_id),
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-    }
-    url = "http://d1.weather.com.cn/dingzhi/{}.html?_={}".format(city_id, t)
-    response = get(url, headers=headers)
-    response.encoding = "utf-8"
-    response_data = response.text.split(";")[0].split("=")[-1]
-    response_json = eval(response_data)
-    # print(response_json)
-    weatherinfo = response_json["weatherinfo"]
+  #   t = (int(round(time() * 1000)))
+ #    headers = {
+  #       "Referer": "http://www.weather.com.cn/weather1d/{}.shtml".format(city_id),
+  #       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+  #                     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+  #   }
+  #   url = "http://d1.weather.com.cn/dingzhi/{}.html?_={}".format(city_id, t)
+  #   response = get(url, headers=headers)
+  #   response.encoding = "utf-8"
+  #   response_data = response.text.split(";")[0].split("=")[-1]
+  #   response_json = eval(response_data)
+ #    # print(response_json)
+ #    weatherinfo = response_json["weatherinfo"]
     # 天气
-    weather = weatherinfo["weather"]
+   # weather = weatherinfo["weather"]
     # 最高气温
-    temp = weatherinfo["temp"]
+  #   temp = weatherinfo["temp"]
     # 最低气温
-    tempn = weatherinfo["tempn"]
-    return weather, temp, tempn
+  #   tempn = weatherinfo["tempn"]
+  #   return weather, temp, tempn
+    
+def get_weather():
+  url = https://devapi.qweather.com/v7/weather/3d?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2
+  res = requests.get(url).json()
+  weatherinfo = res['data']['daily'][0]
+  weather =  
+
+  return weather['weather'], math.floor(weather['temp'])
 
 
 def get_birthday(birthday, year, today):
