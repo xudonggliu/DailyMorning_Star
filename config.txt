@@ -2,19 +2,21 @@
 {
 # 公众号配置
 # 公众号appId
-"app_id": "wxa798d*******2b41",
+"app_id": "wx025fd2d4a445b3fe",
 # 公众号appSecret
-"app_secret": "1f28c7b7d4*******c9a10deb45b96e5",
+"app_secret": "a61e62e083aead2f40ed101972887362",
 # 模板消息id
-"template_id": "Oxhna4AulaFbI*******eOXGN4qKucO6GV--giO1oJg",
+"template_id": "W8iPzBM18kilgLsh_lnkvqpbv0CS6BQwCsAJC67mVcg",
 # 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
-"user": ["oVtAf5gqB****yMSmrHPnMrrVQzI", "oVtAf5r5QPe*****pG-Eo48fyoYw"],
+# "user": ["oPLdB5_kQRNpbWc-Lpdn4UhsWL_E", "oVtAf5r5QPe*****pG-Eo48fyoYw"],
+"user": ["oPLdB5_kQRNpbWc-Lpdn4UhsWL_E"],
+
 
 # 信息配置
 # 所在省份   不加省，河北省写河北
-"province": "河北",
+"province": "河南",
 # 所在城市   不加市，石家庄市写石家庄
-"city": "石家庄",
+"city": "南阳",
 # 生日1，修改名字为对应需要显示的名字，如果生日为农历，在最前面加上r即可
 "birthday1": {"name": "庆庆", "birthday": "2001-04-04"},
 # 生日2
