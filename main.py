@@ -64,12 +64,12 @@ def get_access_token():
   #   return weather, temp, tempn
     
 def get_weather():
-  url = https://devapi.qweather.com/v7/weather/3d?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2
+  url = "https://devapi.qweather.com/v7/weather/3d?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2"
   res = requests.get(url).json()
   weatherinfo = res['data']['daily'][0]
   tempn = weatherinfo["tempMin"]
   temp = weatherinfo["tempMax"]
-  url1 = https://devapi.qweather.com/v7/weather/now?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2
+  url1 = "https://devapi.qweather.com/v7/weather/now?location=101180708&key=82f4bdcbb85e47e3ae1a136aace1c8e2"
   res1 = requests.get(url1).json()
   weatherinfonow = res1['data']['now']
   tempnow = weatherinfonow["temp"]
