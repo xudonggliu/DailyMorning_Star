@@ -242,8 +242,8 @@ if __name__ == "__main__":
     province, city = config["province"], config["city"]
     weather, max_temperature, min_temperature, now_temperature = get_weather()
     # 获取词霸每日金句
-    note_ch = get_words(), note_en = get_ciba()
+    note_ch, note_en = get_ciba()
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, city, weather, max_temperature, min_temperature, now_temperature, note_ch, note_en)
+        send_message(user, accessToken, city, weather, max_temperature, min_temperature, now_temperature, get_words(), note_en)
     os.system("pause")
