@@ -138,9 +138,14 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     month = localtime().tm_mon
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
-    print("today:" + "{}".format(today))
-    week = week_list[today.isoweekday() % 7]
-    print("today:" +"{} {}".format(today, week))
+    # 创建一个时间差异对象，表示 8 个小时
+    eight_hours = datetime.timedelta(hours=8)
+    # 将时间差异对象与日期对象相加
+    today_plus_eight_hours = datetime.datetime.combine(today, datetime.time()) + eight_hours
+    
+    print("today:" + "{}".format(today_plus_eight_hours))
+    week = week_list[today_plus_eight_hours.isoweekday() % 7]
+    print("today:" +"{} {}".format(today_plus_eight_hours, week))
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -160,7 +165,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
         "topcolor": "#FF0000",
         "data": {
             "date": {
-                "value": "{} {}".format(today, week),
+                "value": "{} {}".format(today_plus_eight_hours, week),
                 "color": get_color()
             },
             "city": {
@@ -199,7 +204,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     }
     for key, value in birthdays.items():
         # 获取距离下次生日的时间
-        birth_day = get_birthday(value["birthday"], year, today)
+        birth_day = get_birthday(value["birthday"], year, today_plus_eight_hours)
         if birth_day == 0:
             birthday_data = "今天{}生日哦，祝{}生日快乐！".format(value["name"], value["name"])
         else:
