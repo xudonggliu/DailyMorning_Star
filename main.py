@@ -151,9 +151,9 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     year = localtime().tm_year
     month = localtime().tm_mon
     day = localtime().tm_mday
-    hour = now.tm_hour
-    minute = now.tm_min
-    second = now.tm_sec
+    hour = localtime().tm_hour
+    minute = localtime().tm_min
+    second = localtime().tm_sec
 
     # 创建一个 datetime 对象，然后加上 8 个小时
     today = dt.date(year=year, month=month, day=day)
