@@ -7,7 +7,7 @@ from zhdate import ZhDate
 import sys
 import os
 import requests
-import datetime
+import datetime as dt
 
 
 def get_color():
@@ -138,11 +138,11 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     year = localtime().tm_year
     month = localtime().tm_mon
     day = localtime().tm_mday
-    today = datetime.date(datetime(year=year, month=month, day=day))
+    today = dt.date(datetime(year=year, month=month, day=day))
     # 创建一个时间差异对象，表示 8 个小时
-    eight_hours = datetime.timedelta(hours=8)
+    eight_hours = dt.timedelta(hours=8)
     # 将时间差异对象与日期对象相加
-    today_plus_eight_hours = datetime.datetime.combine(today, datetime.time()) + eight_hours
+    today_plus_eight_hours = dt.datetime.combine(today, datetime.time()) + eight_hours
     print("today:" + "{}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S')))
     week = week_list[today_plus_eight_hours.isoweekday() % 7]
     # 获取在一起的日子的日期格式
