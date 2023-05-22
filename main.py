@@ -164,8 +164,8 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     # 将 datetime.datetime 对象转换为 datetime.date 对象
     today_plus_eight_hours = today_plus_eight_hours.date()
     print("today: " + "{} {}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S'), week_list[today_plus_eight_hours.weekday()]))
-#     week = week_list[today_plus_eight_hours.isoweekday() % 7]
-    week = week_list[today_plus_eight_hours.weekday()]
+    week = week_list[today.isoweekday() % 7]
+#     week = week_list[today.weekday()]
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -185,7 +185,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
         "topcolor": "#FF0000",
         "data": {
             "date": {
-                "value": "{} {}".format(today_plus_eight_hours, week),
+                "value": "{} {}".format(today, week),
                 "color": get_color()
             },
             "city": {
@@ -224,7 +224,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     }
     for key, value in birthdays.items():
         # 获取距离下次生日的时间
-        birth_day = get_birthday(value["birthday"], year, today_plus_eight_hours)
+        birth_day = get_birthday(value["birthday"], year, today)
         if birth_day == 0:
             birthday_data = "今天{}生日哦，祝{}生日快乐！".format(value["name"], value["name"])
         else:
