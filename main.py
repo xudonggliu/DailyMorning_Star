@@ -134,17 +134,34 @@ def get_words():
 
 def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature,now_temperature, note_ch, note_en):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
+#     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+#     year = localtime().tm_year
+#     month = localtime().tm_mon
+#     day = localtime().tm_mday
+#     today = dt.date(datetime(year=year, month=month, day=day))
+#     # 创建一个时间差异对象，表示 8 个小时
+#     eight_hours = dt.timedelta(hours=8)
+#     # 将时间差异对象与日期对象相加
+#     today_plus_eight_hours = dt.datetime.combine(today, datetime.time()) + eight_hours
+#     print("today:" + "{}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S')))
+    # 创建周列表
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+
+    # 获得当前本地时间
     year = localtime().tm_year
     month = localtime().tm_mon
     day = localtime().tm_mday
-    today = dt.date(datetime(year=year, month=month, day=day))
-    # 创建一个时间差异对象，表示 8 个小时
+
+    # 创建一个 datetime 对象，然后加上 8 个小时
+    today = dt.date(year=year, month=month, day=day)
     eight_hours = dt.timedelta(hours=8)
-    # 将时间差异对象与日期对象相加
-    today_plus_eight_hours = dt.datetime.combine(today, datetime.time()) + eight_hours
-    print("today:" + "{}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S')))
-    week = week_list[today_plus_eight_hours.isoweekday() % 7]
+    today_plus_eight_hours = dt.datetime.combine(today, dt.time()) + eight_hours
+
+    # 将 datetime.datetime 对象转换为 datetime.date 对象
+    today_plus_eight_hours = today_plus_eight_hours.date()
+    print("today: " + "{} {}".format(today_plus_eight_hours.strftime('%Y-%m-%d'), 
+#     week = week_list[today_plus_eight_hours.isoweekday() % 7]
+    week_list[today_plus_eight_hours.weekday()]))
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
