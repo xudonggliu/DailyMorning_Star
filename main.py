@@ -138,7 +138,9 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     month = localtime().tm_mon
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
+    print("today:" +today, week)
     week = week_list[today.isoweekday() % 7]
+    print("today:" +"{} {}".format(today, week))
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -202,10 +204,10 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
             birthday_data = "今天{}生日哦，祝{}生日快乐！".format(value["name"], value["name"])
         else:
             birthday_data = "距离{}的生日还有{}天".format(value["name"], birth_day)
-        print(birthday_data)
+        # print(birthday_data)
         # 将生日数据插入data
         data["data"][key] = {"value": birthday_data, "color": get_color()}
-        print("data:" + str(data))
+        # print("data:" + str(data))
     headers = {
         'Content-Type': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
