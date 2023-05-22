@@ -142,10 +142,8 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     eight_hours = datetime.timedelta(hours=8)
     # 将时间差异对象与日期对象相加
     today_plus_eight_hours = datetime.datetime.combine(today, datetime.time()) + eight_hours
-    
-    print("today:" + "{}".format(today_plus_eight_hours))
+    print("today:" + "{}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S')))
     week = week_list[today_plus_eight_hours.isoweekday() % 7]
-    print("today:" +"{} {}".format(today_plus_eight_hours, week))
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
