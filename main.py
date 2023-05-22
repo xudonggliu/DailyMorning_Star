@@ -159,9 +159,9 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
 
     # 将 datetime.datetime 对象转换为 datetime.date 对象
     today_plus_eight_hours = today_plus_eight_hours.date()
-    print("today: " + "{} {}".format(today_plus_eight_hours.strftime('%Y-%m-%d'), 
+    print("today: " + "{} {}".format(today_plus_eight_hours.strftime('%Y-%m-%d %H:%M:%S'), 
 #     week = week_list[today_plus_eight_hours.isoweekday() % 7]
-    week_list[today_plus_eight_hours.weekday()]))
+    week = week_list[today_plus_eight_hours.weekday()]))
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
