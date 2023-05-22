@@ -138,7 +138,7 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     month = localtime().tm_mon
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
-    print("today:" +today, week)
+    print("today:" + "{}".format(today))
     week = week_list[today.isoweekday() % 7]
     print("today:" +"{} {}".format(today, week))
     # 获取在一起的日子的日期格式
