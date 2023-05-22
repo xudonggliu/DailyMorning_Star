@@ -151,11 +151,15 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     year = localtime().tm_year
     month = localtime().tm_mon
     day = localtime().tm_mday
+    hour = now.tm_hour
+    minute = now.tm_min
+    second = now.tm_sec
 
     # 创建一个 datetime 对象，然后加上 8 个小时
     today = dt.date(year=year, month=month, day=day)
+    today_time = dt.time(hour, minute, second)
     eight_hours = dt.timedelta(hours=8)
-    today_plus_eight_hours = dt.datetime.combine(today, dt.time()) + eight_hours
+    today_plus_eight_hours = dt.datetime.combine(today, today_time) + eight_hours
 
     # 将 datetime.datetime 对象转换为 datetime.date 对象
     today_plus_eight_hours = today_plus_eight_hours.date()
